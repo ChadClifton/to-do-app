@@ -1,120 +1,344 @@
+* {
+  box-sizing: border-box;
+  margin: 0%;
+}
+
+::selection {
+  background-color: #ffad8c;
+  color: whitesmoke;
+}
+
 body {
-    margin: 0;
-    min-width: 250px;
+  color: black;
+  font-size: 1rem;
+  margin: 2.5rem 0rem 2.5rem 0rem;
+  background: linear-gradient(-45deg, #6da6b1,#0da3c6, #0a338b, #050449);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  /* Include the padding and border in an element's total width and height */
-  * {
-    box-sizing: border-box;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  /* Remove margins and padding from the list */
-  ul {
-    margin: 0;
-    padding: 0;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  /* Style the list items */
-  ul li {
-    cursor: pointer;
-    position: relative;
-    padding: 12px 8px 12px 40px;
-    list-style-type: none;
-    background: #eee;
-    font-size: 18px;
-    transition: 0.2s;
-    
-    /* make the list items unselectable */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+}
+
+#app {
+  margin: 0 auto;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 4px 4px 40px #011126;
+}
+
+#app h1,
+h2,
+h3 {
+  margin: 0%;
+}
+
+#app p {
+  margin: 0%;
+  padding: 0.7rem 0rem 0.7rem 0rem;
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    margin: 0%;
+    animation: gradient 10s ease infinite;
   }
-  
-  /* Set all odd list items to a different color (zebra-stripes) */
-  ul li:nth-child(odd) {
-    background: #f9f9f9;
+}
+
+header {
+  background-image: url(../images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f2ad85;
+  color: whitesmoke;
+  height: 200px;
+  padding: 0.7rem 1rem 0rem 1rem;
+}
+
+header h2 {
+  font-size: 1.17rem;
+}
+
+/*main body styling*/
+main {
+  background-color: #81c3d9;
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+/*inbox styling*/
+#inbox {
+  padding: 0.7rem 0rem 0.7rem 0rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*dropdown styling*/
+#inbox select {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #011126;
+  width: 7.6rem;
+  padding: 0rem 0rem 0.3rem 0rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#inbox .type-select {
+  background-color: #fbc097;
+}
+
+/*task container styling*/
+.todo {
+  background-color: transparent;
+  border-bottom: 1px solid #010916;
+  margin: 0.5rem auto;
+  padding: 0.9rem 0.3rem 0.3rem 0.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: all 0.5s ease;
+}
+
+.todoList {
+  min-width: 100%;
+  list-style: none;
+}
+
+.todo-container ul {
+  padding: 0%;
+}
+
+.todo span {
+  flex: 1;
+}
+
+/*task container button styling*/
+.completeBtn,
+.editBtn,
+.deleteBtn {
+  background-color: #f2ad85;
+  color: whitesmoke;
+  padding: 0.5rem;
+  border: none;
+  margin: 0rem 0rem 0rem 0.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+.completeBtn {
+  background-color: #fbc097;
+}
+
+.editBtn {
+  background-color: #f28f6b;
+}
+
+.deleteBtn {
+  background-color: #d96d55;
+}
+
+.completeBtn:active,
+.editBtn:active,
+.deleteBtn:active {
+  filter: contrast(50%);
+}
+
+.fa-check,
+.fa-pen,
+.fa-trash {
+  pointer-events: none;
+}
+
+/*checking tasks off*/
+.completed {
+  text-decoration: line-through;
+  opacity: 70%;
+  transform: scale(95%);
+}
+
+/*add button*/
+#button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.7rem 0rem 0.7rem 0rem;
+}
+
+#add-btn {
+  border: 1px solid transparent;
+  background-color: #7b35ca;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  color: whitesmoke;
+  font-size: 40px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#add-btn:hover {
+  background-color: whitesmoke;
+  color: #7b35ca;
+}
+
+.push:active {
+  animation: push 0.1s linear 1;
+}
+
+@keyframes push {
+  50% {
+    transform: scale(0.8);
   }
-  
-  /* Darker background-color on hover */
-  ul li:hover {
-    background: #ddd;
-  }
-  
-  /* When clicked on, add a background color and strike out text */
-  ul li.checked {
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-  }
-  
-  /* Add a "checked" mark when clicked on */
-  ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-  }
-  
-  /* Style the close button */
-  .close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
-  }
-  
-  .close:hover {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  /* Style the header */
-  .header {
-    background-color: #f44336;
-    padding: 30px 40px;
-    color: white;
+}
+
+@media screen and (max-width: 1200px) {
+  .todo {
     text-align: center;
   }
-  
-  /* Clear floats after the header */
-  .header:after {
-    content: "";
-    display: table;
-    clear: both;
+}
+
+/*modal styling*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-header {
+  background-color: #010916;
+  margin: auto;
+  margin-top: 6rem;
+  padding: 0.63rem;
+  max-width: 540px;
+}
+
+.modal-header h2 {
+  color: whitesmoke;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.modal-content {
+  background-color: whitesmoke;
+  margin: auto;
+  padding: 10px;
+  max-width: 540px;
+}
+
+.close {
+  color: whitesmoke;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .modal-header {
+    margin-top: 0%;
   }
-  
-  /* Style the input */
-  input {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    width: 75%;
-    padding: 10px;
-    float: left;
-    font-size: 16px;
-  }
-  
-  /* Style the "Add" button */
-  .addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #d9d9d9;
-    color: #555;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
-  }
-  
-  .addBtn:hover {
-    background-color: #bbb;
-  }
+}
+
+/*form styling*/
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+form input,
+form select {
+  padding: 0rem 0.3rem 0.3rem 0.3rem;
+  margin: 0rem 0rem 1.2rem 0rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #010916;
+  font-size: 1.1rem;
+  background-color: transparent;
+  max-width: 500px;
+}
+
+form label {
+  font-size: 1.17rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  margin: 0rem 0rem 0.73rem 0rem;
+}
+
+form button {
+  background-color: #7b35ca;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 80px;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: none;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+form button:hover {
+  background-color: whitesmoke;
+  color: #7b35ca;
+}
+
+/*footer styling*/
+footer {
+  background-image: url(../images/mountain-background.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-color: #010916;
+  color: whitesmoke;
+  height: 60px;
+  padding: 0rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+footer button {
+  background-color: #81c3d9;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 80px;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: none;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+footer button:hover {
+  background-color: whitesmoke;
+  color: #7b35ca;
+}

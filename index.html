@@ -1,26 +1,77 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/css/stylesheet.css">
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/stylesheet.css" />
+    <script src="./js/javascript.js" type="module" defer></script>
+    <title>To-dp App</title>
+  </head>
+  <body>
+    <div id="app">
+    
+      <header id="header">
+        <h1>To-do list</h1>
+        <h2 id="date"></h2>
+      </header>
 
-<div id="myDIV" class="header">
-  <h2 style="margin:5px">My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
 
-<ul id="myUL">
-  <li>Hit the gym</li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
-</ul>
+      <main id="main">
+        <inbox id="inbox">
+          <h3>Tasks:</h3>
+          <!-- task list sorter -->
+          <div class="select">
+            <select name="todos" class="sortTodo">
+              <!-- <option class="type-select" value="all">All</option> -->
+              <option class="type-select" value="Alphabetical">
+                Alphabetical
+              </option>
+              <option class="type-select" value="Numerical">Numerical</option>
+            </select>
+          </div>
+        </inbox>
 
-<script src="/js/javascript.js"></script>
-</body>
+        <!-- todo container -->
+        <container id="main-body">
+          <div class="todo-container">
+            <div class="todoList" id="task-display"></div>
+          </div>
+        </container>
+
+        <!-- add item button -->
+        <form-modal id="button">
+          <button id="add-btn" class="myBtn push" title="Add button">
+            <i class="fas fa-plus" id="plus-icon" alt="Add icon"></i>
+            +
+          </button>
+          <!-- modal -->
+          <modal id="myModal" class="modal">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2>Add Task:</h2>
+            </div>
+            <div class="modal-content">
+              <!-- form and inputs -->
+              <form id="inputForm">
+                <!-- name of task -->
+                <label for="taskInput" class="form-label">Task name:</label>
+                <input type="text" placeholder="Enter task name" id="taskName" class="taskInput" maxlength="20" required />
+                <!-- due date and time -->
+                <label for="dueInput" class="form-label">Date and time:</label>
+                <input type="datetime-local" id="taskDate" class="dueInput" max="2030-12-31T23:59" required />
+                
+                <button id="createTask" class="todoBtn push" type="submit">Submit</button>
+              </form>
+            </div>
+          </modal>
+        </form-modal>
+      </main>
+
+
+      <footer id="footer">
+        <button id="clear" class="clearList push">Clear</button>
+      </footer>
+    </div>
+  </body>
 </html>
